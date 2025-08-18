@@ -1,0 +1,22 @@
+{
+  "name": "tg-proxy-vercel",
+  "version": "1.0.0",
+  "description": "TG频道代理服务器，用于转发t.me请求",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "telegram",
+    "proxy",
+    "nodejs",
+    "express"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "vercel": "latest"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
