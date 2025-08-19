@@ -47,9 +47,10 @@ module.exports = async (req, res) => {
     
     let data = await response.text();
 
-    // 重写图片 URL 为代理 URL（遵循 DRY 原则）
+    // 重写媒体 URL 为代理 URL（遵循 DRY 原则）
+    // 匹配所有 Telegram CDN 媒体文件，包括图片、视频和带查询参数的 URL
     data = data.replace(
-      /https:\/\/cdn\d*\.telesco\.pe\/file\/([^"'\s]+)/g,
+      /https:\/\/cdn\d*\.telesco\.pe\/file\/([^"'\s<>]+)/g,
       '/img/$1'
     );
 
