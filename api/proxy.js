@@ -45,12 +45,18 @@ module.exports = async (req, res) => {
       });
     }
     
-    const data = await response.text();
-    
+    let data = await response.text();
+
+    // 重写图片 URL 为代理 URL（遵循 DRY 原则）
+    data = data.replace(
+      /https:\/\/cdn\d*\.telesco\.pe\/file\/([^"'\s]+)/g,
+      '/img/$1'
+    );
+
     // 设置响应头并返回
     res.setHeader('Content-Type', response.headers.get('content-type') || 'text/html');
     res.setHeader('Cache-Control', 'no-cache');
-    
+
     return res.status(200).send(data);
     
   } catch (error) {
